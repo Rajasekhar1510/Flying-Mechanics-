@@ -7,24 +7,31 @@ public class FlyController : MonoBehaviour
     public float moveSpeed;
     public float maxFloatHeight = 10;
     public float minFloatHeight;
+    public float turnSpeed;
 
     public Camera freeLookCam;
     private float currentHeight;
     private Animator anim;
+    private float xRotation;
+    private Rigidbody rb;
 
     void Start()
     {
         currentHeight = transform.position.y;
         anim = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        xRotation = freeLookCam.transform.rotation.eulerAngles.x;
+
+        float horizontalInput = Input.GetAxis("Horizontal");
+
         if (Input.GetKey(KeyCode.W))
         {
-            MoveCharcter();
+            MoveCharcter(horizontalInput);
         }
         else
         {
@@ -34,15 +41,15 @@ public class FlyController : MonoBehaviour
         transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);
     }
 
-    public void MoveCharcter()
+    public void MoveCharcter(float horizontalInput)
     {
         Vector3 cameraForward = new Vector3(freeLookCam.transform.forward.x, 0, freeLookCam.transform.forward.z);
         transform.rotation = Quaternion.LookRotation(cameraForward);
-        transform.Rotate(new Vector3(0, 0, 0), Space.Self);
+        transform.Rotate(new Vector3(xRotation, 0, 0), Space.Self);
 
         anim.SetBool("isFlying", true);
 
-        Vector3 forward = freeLookCam.transform.forward;
+        Vector3 forward = freeLookCam.transform.forward + freeLookCam.transform.right * horizontalInput;
         Vector3 flyDirection = forward.normalized;
 
 
@@ -50,9 +57,11 @@ public class FlyController : MonoBehaviour
         currentHeight = Mathf.Clamp(currentHeight, minFloatHeight, maxFloatHeight);
 
         transform.position += flyDirection * moveSpeed * Time.deltaTime;
+
+        transform.Rotate(Vector3.up * horizontalInput * turnSpeed * Time.deltaTime);
+
         transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);
-
-
+        rb.rotation = Quaternion.Euler(0, rb.rotation.eulerAngles.y + horizontalInput * turnSpeed * Time.deltaTime, 0);
 
     }
 
@@ -62,3 +71,4 @@ public class FlyController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
 }
+

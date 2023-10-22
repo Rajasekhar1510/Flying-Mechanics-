@@ -109,6 +109,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3ed70939e2374bb42ae74661de774780, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 81df8d835160d5d42b40a8b681983f14,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 045e3a2baa7aa7949b58fc506554fc43, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -125,6 +130,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5196546770419200937}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81df8d835160d5d42b40a8b681983f14,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3318909556707653915}
   m_SourcePrefab: {fileID: 100100000, guid: 81df8d835160d5d42b40a8b681983f14, type: 3}
 --- !u!4 &91704056716734553 stripped
 Transform:
@@ -148,7 +157,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 10
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -160,7 +169,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -188,3 +197,20 @@ CapsuleCollider:
   m_Height: 20.14
   m_Direction: 1
   m_Center: {x: 0, y: 8.4, z: 0}
+--- !u!114 &3318909556707653915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724548433337150179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3119729d505df4da098b550e2db804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 35
+  maxFloatHeight: 1000
+  minFloatHeight: 1.5
+  turnSpeed: 0
+  freeLookCam: {fileID: 0}
