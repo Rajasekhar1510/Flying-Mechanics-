@@ -134,6 +134,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3318909556707653915}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81df8d835160d5d42b40a8b681983f14,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5097805341258014693}
   m_SourcePrefab: {fileID: 100100000, guid: 81df8d835160d5d42b40a8b681983f14, type: 3}
 --- !u!4 &91704056716734553 stripped
 Transform:
@@ -211,6 +215,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 35
   maxFloatHeight: 1000
-  minFloatHeight: 1.5
-  turnSpeed: 0
+  minFloatHeight: 3.5
+  turnSpeed: 0.5
   freeLookCam: {fileID: 0}
+--- !u!114 &5097805341258014693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724548433337150179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21921c3116c097f449069cfcd00029bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freeLookCam: {fileID: 0}
+  zoonSpeed: 10
+  startFOV: 40
+  zoomedOutFOV: 60
+  offSetStart: 0.45
+  offSetEnd: 0

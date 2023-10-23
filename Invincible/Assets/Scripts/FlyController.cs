@@ -13,14 +13,13 @@ public class FlyController : MonoBehaviour
     private float currentHeight;
     private Animator anim;
     private float xRotation;
-    private Rigidbody rb;
+
 
     void Start()
     {
         currentHeight = transform.position.y;
         anim = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
-        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -47,7 +46,7 @@ public class FlyController : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(cameraForward);
         transform.Rotate(new Vector3(xRotation, 0, 0), Space.Self);
 
-        anim.SetBool("isFlying", true);
+         anim.SetBool("isFlying", true);
 
         Vector3 forward = freeLookCam.transform.forward + freeLookCam.transform.right * horizontalInput;
         Vector3 flyDirection = forward.normalized;
@@ -61,7 +60,6 @@ public class FlyController : MonoBehaviour
         transform.Rotate(Vector3.up * horizontalInput * turnSpeed * Time.deltaTime);
 
         transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);
-        rb.rotation = Quaternion.Euler(0, rb.rotation.eulerAngles.y + horizontalInput * turnSpeed * Time.deltaTime, 0);
 
     }
 
@@ -71,4 +69,3 @@ public class FlyController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
 }
-
