@@ -291,7 +291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e4ce585021c114e8f97a84e21a2ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 0}
   meshFilter: {fileID: 784998063}
   size: {x: 20, y: 20}
 --- !u!33 &784998063

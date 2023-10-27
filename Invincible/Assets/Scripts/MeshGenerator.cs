@@ -6,13 +6,13 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter))]
 public class MeshGenerator : MonoBehaviour
 {
-    [SerializeField] Mesh mesh;
+    Mesh mesh;
     [SerializeField] MeshFilter meshFilter;
     [SerializeField] Vector2Int size;
     Vector3[] vertices;
     int[] triangles;
 
-    int[] CreateTraingles()
+    private int[] CreateTraingles()
     {
         
         triangles = new int[size.x * size.y * 6];
@@ -54,19 +54,18 @@ public class MeshGenerator : MonoBehaviour
     void Generate()
     {
         mesh = new Mesh();
-       // mesh.Clear();
+        // mesh.Clear();
 
-        mesh.vertices = vertices;
-        mesh.triangles = triangles;
+        mesh.vertices = CreateVertices();
+        mesh.triangles = CreateTraingles();
 
         mesh.RecalculateNormals();
         meshFilter.sharedMesh = mesh;
     }
 
-    private void Start()
+    private void Update()
     {
         Generate();
-        CreateTraingles();
-        CreateVertices();
     }
+
 }
